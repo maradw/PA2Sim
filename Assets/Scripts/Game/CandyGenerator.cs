@@ -28,6 +28,7 @@ public class CandyGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SetMinMax();
     }
     void Score()
@@ -37,6 +38,7 @@ public class CandyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Score();
         actual_time += Time.deltaTime;
         if (time_to_create <= actual_time)
         {
@@ -46,6 +48,7 @@ public class CandyGenerator : MonoBehaviour
             actual_time = 0f;
             actual_candies.Add(candy);
         }
+       
     }
 
     void SetMinMax()
@@ -62,15 +65,18 @@ public class CandyGenerator : MonoBehaviour
             Destroy(candy_script.gameObject);
             return;
         }
-        if (candy_script.frame == 3)
+        /*if (candy_script.frame == 3)
         {
             SceneManager.LoadScene("GameOver");
             return;
-        }
+        }*/
         int lives = player_script.player_lives;
+
         scoreInsp = player_script.playerScore;
+
         int score_changer = candy_script.scoreChanges;
-        scoreInsp += score_changer;
+
+        scoreInsp = scoreInsp+ score_changer;
         print(scoreInsp);
         if (lives <= 0)
         {
@@ -78,6 +84,10 @@ public class CandyGenerator : MonoBehaviour
         }
         //player_script.player_lives = lives;
         Destroy(candy_script.gameObject);
+    }
+    public void CalculateScore()
+    {
+
     }
 
 

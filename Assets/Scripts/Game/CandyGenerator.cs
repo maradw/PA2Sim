@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.UI;
+using TMPro;
 
 public class CandyGenerator : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class CandyGenerator : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public List<GameObject> actual_candies = new List<GameObject>();
+    [SerializeField] private TextMeshProUGUI _score;
+    public int scoreInsp;
 
     void Awake()
     {
@@ -26,7 +30,10 @@ public class CandyGenerator : MonoBehaviour
     {
         SetMinMax();
     }
-
+    void Score()
+    {
+        _score.text = "score: " + scoreInsp;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -61,14 +68,15 @@ public class CandyGenerator : MonoBehaviour
             return;
         }
         int lives = player_script.player_lives;
-        int live_changer = candy_script.lifeChanges;
-        lives += live_changer;
-        print(lives);
+        scoreInsp = player_script.playerScore;
+        int score_changer = candy_script.scoreChanges;
+        scoreInsp += score_changer;
+        print(scoreInsp);
         if (lives <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }
-        player_script.player_lives = lives;
+        //player_script.player_lives = lives;
         Destroy(candy_script.gameObject);
     }
 

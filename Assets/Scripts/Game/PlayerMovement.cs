@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,16 +13,25 @@ public class PlayerMovement : MonoBehaviour
     private float limitSuperior;
     private float limitInferior;
     public int player_lives = 4;
+    public float _vertical;
+    public int playerScore = 0;
     // Start is called before the first frame update
     void Start()
     {
-        if (up == KeyCode.None) up = KeyCode.UpArrow;
-        if (down == KeyCode.None) down = KeyCode.DownArrow;
+        //if (up == KeyCode.None) up = KeyCode.UpArrow;
+        //if (down == KeyCode.None) down = KeyCode.DownArrow;
         myRB = GetComponent<Rigidbody2D>();
         SetMinMax();
     }
+    public void OnMovement(InputAction.CallbackContext move)
+    {
+        //if (_vertical > Screen.width && _vertical < Screen.height) ;
 
+        _vertical = move.ReadValue<float>();
+
+    }
     // Update is called once per frame
+    /*
     void Update()
     {
         if (Input.GetKey(up) && transform.position.y < limitSuperior)
@@ -36,6 +46,12 @@ public class PlayerMovement : MonoBehaviour
         {
             myRB.velocity = Vector2.zero;
         }
+    }
+    */
+    private void FixedUpdate()
+    {
+        SetMinMax();
+        myRB.velocity = new Vector2(0, _vertical * speed);
     }
 
     void SetMinMax()

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MuteAudio : MonoBehaviour
 {
-    [SerializeField] private Camera m_camera;
+    //[SerializeField] private Camera m_camera;
+    [SerializeField] private AudioListener myAudioList;
     bool enable = true;
     private void Start()
     {
@@ -14,4 +15,20 @@ public class MuteAudio : MonoBehaviour
     {
         //if(enable )
     }
+    public void AudioListenerControl()
+    {
+        if (enable)
+        {
+            
+            myAudioList.enabled = false;
+            enable = false;
+        }
+        else
+        {
+            enable = true;
+            myAudioList.enabled = true; 
+        }
+    }
+
+
 }

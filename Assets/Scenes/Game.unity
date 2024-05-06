@@ -1205,6 +1205,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929853875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929853877}
+  - component: {fileID: 929853876}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &929853876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929853875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b7d186f93206f4882ea64f94a666d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetAudio: {fileID: 11400000, guid: 48a6f52e9e68ad6438e753030b46aa43, type: 2}
+  newSettAudio: {fileID: 24100000, guid: 5ea3d20d332a97b4986b19a32f444ad2, type: 2}
+--- !u!4 &929853877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929853875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.733921, y: 155.61287, z: 0.17176545}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955256382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,7 +2706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dc8a075590ecd4198b6be09b812c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1909359003}
+  myAudioList: {fileID: 1909359002}
 --- !u!114 &1753152819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2704,7 +2750,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1753152820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1753152818}
+        m_TargetAssemblyTypeName: MuteAudio, Assembly-CSharp
+        m_MethodName: AudioListenerControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1753152820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3480,3 +3538,4 @@ SceneRoots:
   - {fileID: 1860443304}
   - {fileID: 1138031187}
   - {fileID: 68736427}
+  - {fileID: 929853877}
